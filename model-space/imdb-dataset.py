@@ -30,3 +30,19 @@ print("length:",len(train_data[0]))
 print("decoded review:",decode_review(train_data[0]))
 
 
+# preprocessing
+train_data = keras.utils.pad_sequences(
+    train_data,
+    maxlen=256,
+    padding='post',
+    value=word_index["<PAD>"]
+)
+
+test_data = keras.utils.pad_sequences(
+    test_data,
+    maxlen=256,
+    padding='post',
+    value=word_index["<PAD>"]
+)
+
+
