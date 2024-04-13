@@ -46,3 +46,29 @@ test_data = keras.utils.pad_sequences(
 )
 
 
+# Model creating
+vocab_size = 10000
+
+model = keras.Sequential()
+model.add(keras.layers.Embedding(vocab_size, 16))
+model.add(keras.layers.GlobalAveragePooling1D())
+model.add(keras.layers.Dense(16, activation='relu'))
+model.add(keras.layers.Dense(1, activation='sigmoid'))
+
+model.compile(optimizer='adam',
+              loss='binary_crossentropy',
+              metrics=['accuracy'])
+
+
+# Model training
+history = model.fit(partial_x_train,
+                    partial_y_train,
+                    epochs=40,
+                    batch_size=512,
+                    validation_data=(x_val, y_val),
+                    verbose=1)
+
+
+# Model evaluating
+results = model.evaluate(test_data,  test_labels, verbose=2)
+print(results)
