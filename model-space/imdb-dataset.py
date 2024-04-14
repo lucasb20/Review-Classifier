@@ -84,7 +84,7 @@ results = model.evaluate(test_data,  test_labels, verbose=2)
 print(results)
 
 # Model save
-model.save_weights('./v1')
+model.save('/models/modelv1.keras')
 
 # Matplotlib
 fig, axs = plt.subplots(1, 2, figsize=(12, 6))
