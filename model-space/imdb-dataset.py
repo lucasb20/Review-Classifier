@@ -87,6 +87,8 @@ print(results)
 model.save_weights('./v1')
 
 # Matplotlib
+fig, axs = plt.subplots(1, 2, figsize=(12, 6))
+
 history_dict = history.history
 
 acc = history_dict['accuracy']
@@ -96,17 +98,18 @@ val_loss = history_dict['val_loss']
 
 epochs = range(1, len(acc) + 1)
 
-plt.plot(epochs, loss, 'bo', label='Training loss')
-plt.plot(epochs, val_loss, 'b', label='Validation loss')
-plt.title('Training and validation loss')
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
+axs[0].plot(epochs, loss, 'bo', label='Training loss')
+axs[0].plot(epochs, val_loss, 'b', label='Validation loss')
+axs[0].set_title('Training and validation loss')
+axs[0].set_xlabel('Epochs')
+axs[0].set_ylabel('Loss')
+axs[0].legend()
 
-plt.plot(epochs, acc, 'bo', label='Training acc')
-plt.plot(epochs, val_acc, 'b', label='Validation acc')
-plt.title('Training and validation accuracy')
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
+axs[1].plot(epochs, acc, 'bo', label='Training acc')
+axs[1].plot(epochs, val_acc, 'b', label='Validation acc')
+axs[1].set_title('Training and validation accuracy')
+axs[1].set_xlabel('Epochs')
+axs[1].set_ylabel('Accuracy')
+axs[1].legend()
 
-plt.legend()
 plt.show()
