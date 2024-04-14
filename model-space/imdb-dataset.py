@@ -47,20 +47,30 @@ test_data = keras.utils.pad_sequences(
 
 
 # Model creating
-vocab_size = 10000
+def createModel():
+    vocab_size = 10000
 
-model = keras.Sequential()
-model.add(keras.layers.Embedding(vocab_size, 16))
-model.add(keras.layers.GlobalAveragePooling1D())
-model.add(keras.layers.Dense(16, activation='relu'))
-model.add(keras.layers.Dense(1, activation='sigmoid'))
+    model = keras.Sequential()
+    model.add(keras.layers.Embedding(vocab_size, 16))
+    model.add(keras.layers.GlobalAveragePooling1D())
+    model.add(keras.layers.Dense(16, activation='relu'))
+    model.add(keras.layers.Dense(1, activation='sigmoid'))
 
-model.compile(optimizer='adam',
-              loss='binary_crossentropy',
-              metrics=['accuracy'])
+    model.compile(optimizer='adam',
+                loss='binary_crossentropy',
+                metrics=['accuracy'])
+    
+    return model
 
+model = createModel()
 
 # Model training
+x_val = train_data[:10000]
+partial_x_train = train_data[10000:]
+
+y_val = train_labels[:10000]
+partial_y_train = train_labels[10000:]
+
 history = model.fit(partial_x_train,
                     partial_y_train,
                     epochs=40,
@@ -73,6 +83,8 @@ history = model.fit(partial_x_train,
 results = model.evaluate(test_data,  test_labels, verbose=2)
 print(results)
 
+# Model save
+model.save_weights('./v1')
 
 # Matplotlib
 history_dict = history.history
