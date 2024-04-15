@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # Download
 imdb = keras.datasets.imdb
 
-(train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=10000)
+(train_data, train_labels), (test_data, test_labels) = imdb.load_data(num_words=20000)
 
 
 # Setup dict
@@ -48,7 +48,7 @@ test_data = keras.utils.pad_sequences(
 
 # Model creating
 def createModel():
-    vocab_size = 10000
+    vocab_size = 20000
 
     model = keras.Sequential()
     model.add(keras.layers.Embedding(vocab_size, 16))
