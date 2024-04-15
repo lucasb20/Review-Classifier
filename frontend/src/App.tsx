@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <main>
+      <main id="index">
         <ReviewForm />
       </main>
     </>

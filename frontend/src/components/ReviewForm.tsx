@@ -14,6 +14,13 @@ export function ReviewForm(){
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
+        const res = document.getElementsByTagName('p')[0]
+
+        const Mock = true
+
+        res.style.color = Mock ? 'green' : 'red'
+        res.innerText = Mock ? "That's great you enjoyed the movie." : "It's unfortunate you didn't enjoy the movie."
+
         setFormData({
         title: '',
         review: '',
@@ -53,6 +60,8 @@ export function ReviewForm(){
                     <button type="submit">Submit</button>
                 </div>
             </form>
+
+            <p>Share your thoughts here!</p>
         </>
     )
 }
