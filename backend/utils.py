@@ -2,22 +2,17 @@
 import tensorflow as tf
 from tensorflow import keras
 import re
+import json
 
 def load_model():
-    return tf.keras.models.load_model("modelv1.keras")
+    return tf.keras.models.load_model("static/modelv1.keras")
 
 def preprocess_text(text : str):
     text = re.sub(r'[^\w\s]', '', text)
     words = text.lower().split()
 
-    imdb = keras.datasets.imdb
-    word_index = imdb.get_word_index()
-
-    word_index = {k:(v+3) for k,v in word_index.items()}
-    word_index["<PAD>"] = 0
-    word_index["<START>"] = 1
-    word_index["<UNK>"] = 2
-    word_index["<UNUSED>"] = 3
+    with open("static/word_index.json",'r') as json_file:
+        word_index : dict = json.dump(json_file)
 
     word_indices = [word_index.get(word, word_index["<UNK>"]) for word in words]
     
