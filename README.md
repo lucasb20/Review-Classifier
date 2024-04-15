@@ -10,4 +10,5 @@ A basic text classification app in React and Flask.
 **Screenshots**
 
 - accurancy: 87.28%
+
 ![accurancy: 87.28%](screenshots/accuracy.png)
