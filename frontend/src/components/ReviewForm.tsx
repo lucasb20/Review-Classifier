@@ -14,20 +14,19 @@ export function ReviewForm(){
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
 
-        const res = document.getElementsByTagName('p')[0]
-
+        const resContainer = document.getElementsByTagName('p')[0]
+        
         const api = `${import.meta.env.BACKEND_HOST}/reviews`
-
-        let predictBool = true
-
+        
         await fetch(api)
         .then(res => res.json())
-        .then(res => predictBool = res.predict)
+        .then(res => {
+            const predictBool = res.predict
+            resContainer.style.color = predictBool ? 'green' : 'red'
+            resContainer.innerText = predictBool ? "That's great you enjoyed the movie." : "It's unfortunate you didn't enjoy the movie."
+        })
         .catch(err => console.log(err))
-
-        res.style.color = predictBool ? 'green' : 'red'
-        res.innerText = predictBool ? "That's great you enjoyed the movie." : "It's unfortunate you didn't enjoy the movie."
-
+        
         setFormData({
         title: '',
         review: '',
