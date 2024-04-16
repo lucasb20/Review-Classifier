@@ -4,9 +4,15 @@ import numpy as np
 import re
 import json
 
+def createModel():
+    model = keras.models.load_model("static/modelv1.h5")
+
+    return model
+
 def predict(data):
-    model = keras.models.load_model("static/modelv1.keras")
-    return model.predict(data)[0][0] > 0.5
+    model = createModel()
+    
+    return 1 if model.predict(data)[0][0] > 0.60 else 0
 
 def preprocess_text(text : str):
     text = re.sub(r'[^\w\s]', '', text)
