@@ -1,11 +1,13 @@
 
-import tensorflow as tf
 from tensorflow import keras
+import numpy as np
 import re
 import json
 
-def load_model():
-    return tf.keras.models.load_model("static/modelv1.keras")
+def predict(data):
+    model = keras.models.load_model("static/modelv1.keras")
+    data = np.expand_dims(data, axis=0)
+    return model.predict(data)[0][0] > 0.5
 
 def preprocess_text(text : str):
     text = re.sub(r'[^\w\s]', '', text)
