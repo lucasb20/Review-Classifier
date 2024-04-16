@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { postReview } from "../services/APIService";
 
 interface ReviewFormData {
     title: string;
@@ -11,22 +12,19 @@ export function ReviewForm(){
         review: '',
     })
 
-    const handleSubmit = async (event: React.FormEvent) => {
+    const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
 
         const resContainer = document.getElementsByTagName('p')[0]
         
-        const api = `${import.meta.env.BACKEND_HOST}/reviews`
-        
-        await fetch(api)
-        .then(res => res.json())
-        .then(res => {
-            const predictBool = res.predict
-            resContainer.style.color = predictBool ? 'green' : 'red'
-            resContainer.innerText = predictBool ? "That's great you enjoyed the movie." : "It's unfortunate you didn't enjoy the movie."
+        postReview(formData.review)
+        .then(data => data.json())
+        .then(data => {
+            const predictBool = data.predict
+            resContainer.style.color = predictBool === 1 ? 'green' : 'red'
+            resContainer.innerText = predictBool === 1 ? "That's great you enjoyed the movie." : "It's unfortunate you didn't enjoy the movie."
         })
-        .catch(err => console.log(err))
-        
+
         setFormData({
         title: '',
         review: '',
