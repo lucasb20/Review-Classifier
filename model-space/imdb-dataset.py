@@ -1,7 +1,6 @@
 
 import tensorflow as tf
 from tensorflow import keras
-import matplotlib.pyplot as plt
 
 # Download
 imdb = keras.datasets.imdb
@@ -84,32 +83,4 @@ results = model.evaluate(test_data,  test_labels, verbose=2)
 print(results)
 
 # Model save
-model.save('/models/modelv1.keras')
-
-# Matplotlib
-fig, axs = plt.subplots(1, 2, figsize=(12, 6))
-
-history_dict = history.history
-
-acc = history_dict['accuracy']
-val_acc = history_dict['val_accuracy']
-loss = history_dict['loss']
-val_loss = history_dict['val_loss']
-
-epochs = range(1, len(acc) + 1)
-
-axs[0].plot(epochs, loss, 'bo', label='Training loss')
-axs[0].plot(epochs, val_loss, 'b', label='Validation loss')
-axs[0].set_title('Training and validation loss')
-axs[0].set_xlabel('Epochs')
-axs[0].set_ylabel('Loss')
-axs[0].legend()
-
-axs[1].plot(epochs, acc, 'bo', label='Training acc')
-axs[1].plot(epochs, val_acc, 'b', label='Validation acc')
-axs[1].set_title('Training and validation accuracy')
-axs[1].set_xlabel('Epochs')
-axs[1].set_ylabel('Accuracy')
-axs[1].legend()
-
-plt.show()
+model.save_weights('modelv1.weights.h5')
