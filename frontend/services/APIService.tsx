@@ -1,7 +1,7 @@
 
 export async function postReview( text : string ){
-    const api = `${import.meta.env.BACKEND_HOST}/reviews/`
-    
+    const api = `${process.env.NEXT_PUBLIC_API_URL}/reviews/`
+
     const response = await fetch(api, {
         method: 'POST',
         headers: {

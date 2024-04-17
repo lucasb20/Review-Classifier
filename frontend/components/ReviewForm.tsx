@@ -26,6 +26,7 @@ export function ReviewForm(){
             resContainer.style.color = predictBool === 1 ? 'green' : 'red'
             resContainer.innerText = predictBool === 1 ? "That's great you enjoyed the movie." : "It's unfortunate you didn't enjoy the movie."
         })
+        .catch(err => alert("Error connecting to the API."))
 
         setFormData({
         title: '',
