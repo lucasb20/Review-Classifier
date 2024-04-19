@@ -7,6 +7,34 @@ A basic text classification app in Nextjs and Flask.
 
  NOTE: 'model-space' folder used to train the model. The model is a 'Sequential' for classification with an Embedding layer, a GlobalAvaragePooling1D layer, a Dense layer with ReLU activation and a Dense layer with sigmoid activation. Total params: 320289.
 
+**Installation instructions**
+
+**System requirements**
+
+* Python 3.10
+* Node.js 20.10
+* NPM 10.2
+
+**Frontend application installation**
+
+1. Enter the frontend application folder
+2. Run `npm install` to install dependencies
+3. Run `npm run dev` to launch the application in development mode
+
+**API installation**
+
+1. Enter the backend application folder
+2. Run `pip install -r requirements` command to install dependencies
+3. Run `flask run` to run development mode
+
+**Docker Compose**
+
+If you have Docker installed, you can also run the project using Docker Compose.
+
+1. Navigate to the project directory where the `docker-compose.yml` file is located
+
+2. Run `docker-compose up --build` command to build and start the containers
+
 **Screenshots**
 
 - accurancy: 87.28%
