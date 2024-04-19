@@ -1,5 +1,5 @@
 # Review-Classifier
-A basic text classification app in React and Flask.
+A basic text classification app in Nextjs and Flask.
 
 **Description**
 
