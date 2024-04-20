@@ -40,3 +40,15 @@ If you have Docker installed, you can also run the project using Docker Compose.
 - accurancy: 87.28%
 
 ![accurancy: 87.28%](screenshots/accuracy.png)
+
+- main screen
+
+![main page screen](screenshots/main_screen.png)
+
+- negative example
+
+![negative example](screenshots/example1.png)
+
+- positive example
+
+![positive example](screenshots/example2.png)
