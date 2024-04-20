@@ -24,14 +24,9 @@ export function ReviewForm(){
         .then(data => {
             const predictBool = data.predict
             resContainer.style.color = predictBool === 1 ? 'green' : 'red'
-            resContainer.innerText = predictBool === 1 ? "That's great you enjoyed the movie." : "It's unfortunate you didn't enjoy the movie."
+            resContainer.innerText = predictBool === 1 ? "That's great you enjoyed it." : "It's unfortunate you didn't enjoy it."
         })
         .catch(err => alert("Error connecting to the API."))
-
-        setFormData({
-        title: '',
-        review: '',
-        })
     }
 
     return(
