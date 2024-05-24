@@ -1,11 +1,16 @@
 
-from tensorflow import keras
+import tflite_runtime.interpreter as tflite
 import numpy as np
 import re
 import json
 
 def createModel():
-    model = keras.models.load_model("static/modelv1.h5")
+    interpreter = tflite.Interpreter(model_path="static/my_model.tflite")
+    input_details = interpreter.get_input_details()
+    output_details = interpreter.get_output_details()
+    interpreter.resize_tensor_input(input_details[0]['index'], (1, 256))
+    interpreter.resize_tensor_input(output_details[0]['index'], (1, 1))
+    interpreter.allocate_tensors()
     return model
 
 model = createModel()
