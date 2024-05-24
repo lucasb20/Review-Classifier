@@ -1,18 +1,15 @@
 
-from flask.views import MethodView
-from flask_smorest import Blueprint
-from schemas import ReviewSchema
+from flask import Blueprint, jsonify, request
 from utils import predict, preprocess_text
 
 
-blp = Blueprint("reviews", "reviews", url_prefix="/reviews", description="Operations on reviews")
+bp = Blueprint("Reviews", __name__, url_prefix="/reviews")
 
-@blp.route("/")
-class Reviews(MethodView):
-    @blp.arguments(ReviewSchema)
-    @blp.response(201)
-    def post(self, data):
-        text = preprocess_text(data["text"])
-        output = predict(text)
-        return { "predict" : output }
-    
+@bp.route("/", methods=['POST'])
+def post():
+    data = request.get_json()
+    if 'text' not in data:
+        return jsonify({"message": "text field not in body."}), 404
+    text = preprocess_text(data["text"])
+    output = predict(text)
+    return { "predict" : output }, 201
