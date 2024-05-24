@@ -1,22 +1,11 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Review Classifier website",
+  "main": "app.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.1"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18"
-  }
+  "author": "lucasb20",
+  "license": "ISC"
 }
