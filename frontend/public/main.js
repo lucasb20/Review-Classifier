@@ -1,4 +1,4 @@
-import './style.css'
+import { postReview } from '/APIService.js'
 
 const resContainer = document.getElementsByTagName('p')[0]
 

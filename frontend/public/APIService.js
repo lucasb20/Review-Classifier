@@ -1,5 +1,5 @@
 
-async function postReview(text){
+export async function postReview(text){
     const API_URL = process.env.API_URL + '/reviews/'
 
     const response = await fetch(API_URL, {
