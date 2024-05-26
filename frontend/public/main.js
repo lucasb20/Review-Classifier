@@ -1,3 +1,4 @@
+import './style.css'
 
 const resContainer = document.getElementsByTagName('p')[0]
 
@@ -17,18 +18,4 @@ function handleSubmit(ev){
         resContainer.innerText = predictBool ? "That's great you enjoyed it." : "It's unfortunate you didn't enjoy it."
     })
     .catch(err => alert("Error connecting to the API."))
-}
-
-async function postReview(text){
-    const API_URL = process.env.API_URL + '/reviews/'
-
-    const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ text: text })
-    })
-
-    return response
 }
