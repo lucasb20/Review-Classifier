@@ -1,5 +1,5 @@
 # Review-Classifier
-A basic text classification app in Nextjs and Flask.
+A basic text classification app in JS Vanilla and Flask.
 
 **Description**
 
@@ -11,9 +11,9 @@ A basic text classification app in Nextjs and Flask.
 
 **System requirements**
 
-* Python 3.10
-* Node.js 20.10
-* NPM 10.2
+* Python 3.x
+* Node.js 20.x
+* NPM 10.x
 
 **Frontend application installation**
 
