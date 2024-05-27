@@ -1,5 +1,5 @@
 
-export async function postReview(text){
+export async function postReview(data){
     const url = API_URL + '/reviews/'
 
     const response = await fetch(url, {
@@ -7,7 +7,7 @@ export async function postReview(text){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ text: text })
+        body: JSON.stringify(data)
     })
 
     return response
