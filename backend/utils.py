@@ -4,6 +4,9 @@ import numpy as np
 import re
 import json
 
+with open("static/word_index.json",'r') as json_file:
+    word_index = json.load(json_file)
+
 def createInterpreter():
     interpreter = tflite.Interpreter(model_path="static/my_model.tflite")
     input_details = interpreter.get_input_details()
@@ -31,9 +34,6 @@ def pad_sequence(text, maxlen, value):
 def preprocess_text(text : str):
     text = re.sub(r'[^\w\s]', '', text)
     words = text.lower().split()
-
-    with open("static/word_index.json",'r') as json_file:
-        word_index = json.load(json_file)
 
     word_indices = [ word_index.get(word, word_index["<UNK>"]) for word in words ]
     word_indices.insert(0, word_index["<START>"])
