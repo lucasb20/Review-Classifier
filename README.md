@@ -11,6 +11,7 @@ A basic text classification app in JS Vanilla and Flask.
 
 **System requirements**
 
+* Linux x86_64
 * Python 3.10.x
 * Node.js 20.x
 * NPM 10.x
