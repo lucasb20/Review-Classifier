@@ -21,12 +21,15 @@ interpreter, (input_index, output_index) = createInterpreter()
 def predict(data):
     input_data = np.array([data], np.float32)
     interpreter.set_tensor(input_index, input_data)
-    interpreter.invoke()
+    try:
+        interpreter.invoke()
+    except:
+        pass
     output_data = interpreter.get_tensor(output_index)
     return 1 if output_data[0][0] > 0.60 else 0
 
 def pad_sequence(text, maxlen, value):
-    x = np.full((maxlen,), value, dtype=np.float32)
+    x = np.full((maxlen,), value, dtype=np.int32)
     trunc = text[:maxlen]
     x[0: len(trunc)] = trunc
     return x
