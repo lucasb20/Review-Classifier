@@ -1,4 +1,4 @@
-# Review-Classifier
+# review-classifier
 A basic text classification app in JS Vanilla and Flask.
 
 **Description**
