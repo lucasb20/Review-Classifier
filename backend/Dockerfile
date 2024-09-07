@@ -7,6 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 80
 
-CMD flask run --host=0.0.0.0
+CMD gunicorn --preload --bind 0.0.0.0:80 --threads 4 app:app
